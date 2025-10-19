@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOODiMi 👨‍🍳</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='pics/logo.png') }}">
+</head>
+<body>
+    <div class="background-overlay"></div>
+
+    <div class="main-container">
+        <header class="header">
+            <img src="{{ url_for('static', filename='pics/logo.png') }}" alt="FOODiMi" class="logo">
+            <h1>FOODiMi - Your Smart Recipe Buddy</h1>
+        </header>
+
+        <form method="POST" action="/" class="main-form">
+
+            <div class="prompt-section">
+                <div class="input-area">
+                    <textarea name="user_prompt" placeholder="Type anything specific (e.g., spicy curry, healthy breakfast, vegan dinner...)" rows="4" class="input-text"></textarea>
+                    <button type="submit" class="generate-btn">Generate Recipe 🧑‍🍳</button>
+                </div>
+
+                <div class="output-section">
+                    <h2>✨ Your Recipe</h2>
+                    <div class="output-text">
+                        {{ reply|safe }}
+                    </div>
+                </div>
+            </div>
+
+            <aside class="sidebar">
+                <h2>🥕 Choose Your Ingredients</h2>
+                <div class="dropdown-area">
+                    <div class="dropdown">
+                        {% for k, v in data.items() %}
+                        <details class="dropdown-item">
+                            <summary>{{ k }}</summary>
+                            <div class="option-list">
+                                {% for item in v %}
+                                <label tabindex="0">
+                                    <input type="checkbox" name="ingredients" value="{{ item }}"> {{ item }}
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </details>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="generate-container">
+                    <button type="submit" class="generate-btn">Generate Recipe 🧑‍🍳</button>
+                </div>
+            </aside>
+            
+        </form>
+    </div>
+</body>
+</html>
