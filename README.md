@@ -64,13 +64,13 @@ The Flask server will start, typically running on http://127.0.0.1:5000/.
 
 📂 **Project Structure**
 
-| File | Description |
-| :--- | :--- |
-| `main.py` | 
-| `templates/template.html` |
-| `static/style.css` | 
-| `static/pics/` | 
-| `.env` | Stores the secret `GEMINI_API` key. |
+| File 
+|
+| `main.py`  
+| `templates/template.html` 
+| `static/style.css`  
+| `static/pics/` 
+| `.env` 
 
 **How to Generate a Recipe🍳**:
 
